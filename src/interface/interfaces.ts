@@ -8,23 +8,28 @@
 
 export type Require = "必修" | "選択" | "自由";
 export type Role = "教授" | "准教授" | "助教" | "非常勤講師";
-export type Target =
-  | "B1"
-  | "B2"
-  | "B3"
-  | "B4"
-  | "M1"
-  | "M2"
-  | "D1"
-  | "D2"
-  | "D3";
-export type Semester =
-  | "前期"
-  | "前期前半"
-  | "前期後半"
-  | "後期"
-  | "後期前半"
-  | "後期後半";
+export interface Target {
+  B1: boolean;
+  B2: boolean;
+  B3: boolean;
+  B4: boolean;
+  M1: boolean;
+  M2: boolean;
+  D1: boolean;
+  D2: boolean;
+  D3: boolean;
+  parseError: boolean;
+}
+
+export interface Semester {
+  前期前半: boolean;
+  前期後半: boolean;
+  後期前半: boolean;
+  後期後半: boolean;
+  特別編成: boolean;
+  parseError: boolean;
+}
+
 export type pw = "有" | "無";
 
 export interface Class {
@@ -35,7 +40,7 @@ export interface Class {
   role: Role;
   unit: number;
   require: Require;
-  target: Array<Target>;
+  target: Target;
   semester: Semester;
   pw: any;
   description: string;
